@@ -20,6 +20,10 @@ namespace VivesBlog.Services
             return _dbContext.Articles.Include(a => a.Author).ToList();
         }
 
-
+        public Article GetById(int id)
+        {
+            return _dbContext.Articles.Include(a => a.Author)
+                .SingleOrDefault(a => a.Key == id);
+        }
     }
 }
