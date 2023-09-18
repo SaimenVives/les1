@@ -2,30 +2,33 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using VivesBlog.Core;
+using VivesBlog.Services;
 
 namespace VivesBlog.Controllers
 {
-	public class HomeController : Controller
+    public class HomeController : Controller
 	{
-		private readonly DB _database;
-
-		public HomeController()
+		private readonly Core.VivesBlogDbContext _database;
+        private readonly ArticleService _articleService;
+        public HomeController(ArticleService articleService)
 		{
-			var builder = new DbContextOptionsBuilder<DB>();
-			builder.UseInMemoryDatabase("VivesBlog");
-			_database = new DB(builder.Options);
-			if (!_database.Articles.Any())
-			{
-				_database.Seed();
-			}
-		}
+            _articleService = articleService;
+
+   //         //moet in startup of program
+   //         var builder = new DbContextOptionsBuilder<Core.VivesBlogDbContext>();
+			//builder.UseInMemoryDatabase("VivesBlog");
+   //         _database = new Core.VivesBlogDbContext(builder.Options);
+			//if (!_database.Articles.Any())
+			//{
+			//	_database.Seed();
+			//}
+    }
 
 
 		public IActionResult Index()
 		{
-			var articles = _database.Articles
-				.Include(a => a.Author)
-				.ToList();
+			var articles = _articleService.GetAll();
 			return View(articles);
 		}
 
