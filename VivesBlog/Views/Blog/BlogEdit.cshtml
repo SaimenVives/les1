@@ -1,11 +1,11 @@
-﻿@model ArticleModel
+﻿@model VivesBlog.Model.ArticleModel
 
 @{
 	ViewData["Title"] = "Edit Article";
 }
 
 <form method="post">
-	<input type="hidden" asp-for="Article.Key"/>
+	<input type="hidden" asp-for="Article.Id"/>
 
 	<partial name="BlogCreateEditPartial" model="Model"/>
 

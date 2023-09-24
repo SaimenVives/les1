@@ -1,7 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VivesBlog.HelperClasses\VivesBlog.HelperClasses.csproj" />
     <ProjectReference Include="..\VivesBlog.Model\VivesBlog.Model.csproj" />
-    <ProjectReference Include="..\VivesBlog.Services\VivesBlog.Services.csproj" />
   </ItemGroup>
 
 </Project>
